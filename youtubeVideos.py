@@ -70,7 +70,7 @@ def load_datalake():
 
             # populate videos table
             query="INSERT into Videos (VideoID,Title,Length,PublishDate,Views,Likes,Favorites,Comments) values (%s,%s,%s,%s,%s,%s,%s,%s)"
-            cur.execute(query,(video_id,title,length,published_at,views,likes,favorites,comments))
+            cur.execute(query, (video_id, title, length, published_at, views, likes, favorites, comments))
     conn.commit()
     cur.close()
     conn.close()
