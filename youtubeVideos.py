@@ -23,7 +23,6 @@ def get_videoDetails():
              search_params["pageToken"] = next_pg_token
         except KeyError:
              break
-
     #get video stats in batches
     for i in range(0,len(video_ids),50):
         video_req = service.videos().list(
@@ -38,12 +37,11 @@ def get_videoDetails():
 def load_datalake():
     conn = pg.connect(
         host="localhost",
-        database="mydb",
+        database="db",
         user="user",
-        password="Mypassword"
+        password="password"
     )
     cur=conn.cursor()
-
     # create videos table
     cur.execute("""
         CREATE TABLE IF NOT EXISTS Videos (
@@ -57,7 +55,6 @@ def load_datalake():
             Comments int);
     """)
     video_details=get_videoDetails()
-
     for video in video_details["items"]:
             video_id = video["id"]
             title = video["snippet"]["title"]
@@ -67,7 +64,6 @@ def load_datalake():
             likes = video["statistics"]["likeCount"]
             favorites = video["statistics"]["favoriteCount"]
             comments = video["statistics"]["commentCount"]
-
             # populate videos table
             query="INSERT into Videos (VideoID,Title,Length,PublishDate,Views,Likes,Favorites,Comments) values (%s,%s,%s,%s,%s,%s,%s,%s)"
             cur.execute(query, (video_id, title, length, published_at, views, likes, favorites, comments))
