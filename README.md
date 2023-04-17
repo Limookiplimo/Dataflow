@@ -1,2 +1,2 @@
 # Youtube API
-Connecting to youtube video details through youtube API. The pyhton client consumes data and loads them into a postgres datalake.
+Obtaining youtube video details through youtube API. The python client consumes data and loads them into a postgres datalake.
