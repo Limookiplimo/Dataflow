@@ -8,7 +8,7 @@ def get_videoDetails():
     service = build("youtube", "v3", developerKey=api_key)
     search_params = {
         "part":"snippet",
-        "channelId":"UC8butISFwT-Wl7EV0hUK0BQ",
+        "channelId":"<CHANNEL_ID>",
         "type":"video",
         "order":"date"
     }
@@ -37,9 +37,9 @@ def get_videoDetails():
 def load_datalake():
     conn = pg.connect(
         host="localhost",
-        database="db",
-        user="user",
-        password="password"
+        database="DATABASE",
+        user="USER",
+        password="PASSWORD"
     )
     cur=conn.cursor()
     # create videos table
