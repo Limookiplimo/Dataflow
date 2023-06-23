@@ -36,10 +36,10 @@ def get_videoDetails():
 # SAVE DATA TO DATALAKE
 def load_datalake():
     conn = pg.connect(
-        host="localhost",
-        database="DATABASE",
-        user="USER",
-        password="PASSWORD"
+        host="lOCALHOST",
+        database="YOUR_DATABASE",
+        user="YOUR_USERNAME",
+        password="YOUR_PASSWORD"
     )
     cur=conn.cursor()
     # create videos table
